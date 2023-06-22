@@ -43,6 +43,8 @@ PkgBR:
     - make
     - python3-rpm-macros
     - python3-setuptools
+    - gettext
+    - gettext-devel
 PkgConfigBR:
     - aspell
     - libxslt

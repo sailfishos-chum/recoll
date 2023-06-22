@@ -34,6 +34,8 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  make
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
+BuildRequires:  gettext
+BuildRequires:  gettext-devel
 
 %description
 Recoll is a desktop search tool that provides full text search (from
