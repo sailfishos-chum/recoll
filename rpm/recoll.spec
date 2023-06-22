@@ -125,6 +125,7 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 # >> install pre
+pushd src
 # << install pre
 %make_install
 
