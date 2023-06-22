@@ -92,6 +92,7 @@ Group:      Development/Libraries
 
 %build
 # >> build pre
+pushd src
 # << build pre
 
 %configure --disable-static \

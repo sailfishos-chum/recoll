@@ -1,7 +1,8 @@
-diff -aNur a/sampleconf/recoll.conf b/sampleconf/recoll.conf
---- a/sampleconf/recoll.conf	2023-02-25 09:41:52.000000000 +0100
-+++ b/sampleconf/recoll.conf	2023-04-06 07:58:26.490091244 +0200
-@@ -425,7 +425,7 @@
+diff --git a/src/sampleconf/recoll.conf b/src/sampleconf/recoll.conf
+index e2e9bac4..87856f10 100644
+--- a/src/sampleconf/recoll.conf
++++ b/src/sampleconf/recoll.conf
+@@ -425,7 +425,7 @@ indexstemminglanguages = english
  # are not performed by unac, but it is unlikely that someone would type the
  # composed forms in a search.
  # unac_except_trans = ßss œoe Œoe æae Æae ﬀff ﬁfi ﬂfl ’' ❜' ʼ' ‐-
