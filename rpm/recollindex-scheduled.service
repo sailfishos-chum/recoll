@@ -1,0 +1,32 @@
+[Unit]
+Description=Recoll scheduled/on-demand document indexing
+Documentation=file:///usr/share/recoll/examples/recoll.conf
+Documentation=https://www.lesbonscomptes.com/recoll/usermanual/usermanual.html
+After=user-session.target
+After=home.mount
+RequiresMountsFor=%h
+
+[Service]
+Type=simple
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=%h/.recoll/
+ReadWritePaths=%h/.cache/recoll/
+PrivateTmp=true
+
+CPUSchedulingPolicy=idle
+Nice=19
+IOSchedulingClass=idle
+
+RuntimeMaxSec=1h
+MemoryHigh=20%
+MemoryMax=33%
+
+Environment=RECOLL_CONFDIR=%h/.recoll
+ExecStartPre=/usr/bin/sh -c "[ -e $RECOLL_CONFDIR/recoll.conf ] || install -m 640 -o %u -D /usr/share/recoll/examples/recoll.conf.sfos $RECOLL_CONFDIR/recoll.conf"
+ExecStartPre=/usr/bin/recollindex -E -c $RECOLL_CONFDIR
+ExecStartPre=-/usr/bin/mkdir -p %h/.cache/recoll
+ExecStart=/usr/bin/recollindex -D -d -c $RECOLL_CONFDIR
+
+[Install]
+Also=%N.timer

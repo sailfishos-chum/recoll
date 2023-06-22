@@ -1,0 +1,18 @@
+[Unit]
+Description=Run recollindex periodically
+
+[Timer]
+Persistent=false
+# don't need to be exact
+RandomizedDelaySec=30m
+# After reboot:
+OnBootSec=1h
+## Every day at six in the morning
+OnCalendar=*-*-* 6:00:00
+## Every day at six in the evening
+OnCalendar=*-*-* 18:00:00
+# doesn't work for users:
+#WakeSystem=true
+
+[Install]
+WantedBy=timers.target

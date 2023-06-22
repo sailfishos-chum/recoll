@@ -1,0 +1,111 @@
+Name: recoll
+Summary: finds documents based on their contents as well as their file names
+Version: 1.34.6
+Release: 0
+Group: Applications/File
+License: GPLv2+
+Sources:
+    - '%{name}-%{version}.tar.gz'
+    - recollindex-scheduled.service
+    - recollindex-scheduled.timer
+    - recoll.conf
+Patches:
+    - fix-conf-typo.patch
+URL: https://www.lesbonscomptes.com/recoll
+Description: |
+    Recoll is a desktop search tool that provides full text search (from
+    single-word to arbitrarily complex boolean searches)
+
+    %if "%{?vendor}" == "chum"
+    Title: Recoll CLI
+    DeveloperName: Les bons comptes
+    PackagedBy: nephros
+    Type: console-application
+    Categories:
+      - System
+      - Utility
+    PackageIcon: https://www.lesbonscomptes.com/recoll/pics/recoll64.png
+    Links:
+      Homepage: %{url}
+      Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
+      Donation: https://www.lesbonscomptes.com/donations/index.html
+    %endif
+RequiresPre:
+    - systemd
+RequiresPreUn:
+    - systemd
+RequiresPost:
+    - systemd
+Requires:
+    - aspell-en # need dict en, otherwise indexer exits
+    - xdg-utils
+PkgBR:
+    - make
+    - python3-rpm-macros
+    - python3-setuptools
+PkgConfigBR:
+    - aspell
+    - libxslt
+    - python3
+    - systemd
+    - xapian-core
+    - zlib
+SetupOptions: -q -n %{name}-%{version}/upstream
+ConfigOptions:
+  - '--with-systemd'
+  - '--with-system-unit-dir=%{_unitdir}'
+  - '--with-user-unit-dir=%{_userunitdir}'
+  - '--disable-webkit'
+  - '--disable-webengine'
+  - '--disable-qtgui'
+  - '--disable-x11mon'
+  - '--disable-userdoc'
+  - '--disable-python-chm'
+  # '--disable-python-aspell'
+  - '--without-fam'
+  - '--enable-recollq'
+Files:
+  - '%{_bindir}/*'
+  - '%dir %{_datadir}/%{name}'
+  - '%{_userunitdir}/*'
+  - '%{_datadir}/%{name}/examples/*'
+  # '%exclude %{_datadir}/%{name}/examples/*qss'
+  # '%exclude %{_datadir}/%{name}/examples/*css'
+
+SubPackages:
+    - Name:  helpers
+      Summary: Package to install runtime helpers for %{name}
+      Group: Applications
+      Description:
+              '%{summary}.'
+      Requires:
+        - poppler-utils
+        - libxslt # for xsltproc
+        - unzip
+        - djvulibre
+
+#    - Name:  devel
+#      Summary: Development files for %{name}
+#      Group: Development/Libraries
+#      Files:
+#        - '%{_libdir}/*.so'
+
+    - Name:  python
+      Summary: Python interface for %{name}
+      Group: Applications
+      Description:
+              '%{summary}.'
+      Files:
+        - '%{_datadir}/%{name}/filters/*'
+        - '%{python3_sitearch}/*'
+
+    - Name:  librecoll
+      AsWholeName: true
+      AutoDepend: false
+      Summary: The librecoll library
+      Group: Development/Libraries
+      Description:
+              '%{summary}.'
+      Files:
+        - '%dir %{_libdir}/%{name}'
+        - '%{_libdir}/%{name}/*.so'
