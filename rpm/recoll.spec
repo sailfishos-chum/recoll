@@ -93,6 +93,13 @@ Group:      Development/Libraries
 %build
 # >> build pre
 pushd src
+# see autogen.sh
+cp ylwrap ylwrap.copy
+aclocal
+libtoolize --copy
+automake --add-missing --force-missing --copy
+autoconf ||: # this errors out
+cp ylwrap.copy ylwrap
 # << build pre
 
 %configure --disable-static \

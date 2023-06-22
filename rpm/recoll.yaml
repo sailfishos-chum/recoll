@@ -51,6 +51,7 @@ PkgConfigBR:
     - xapian-core
     - zlib
 SetupOptions: -q -n %{name}-%{version}/upstream
+#Configure: reconfigure
 ConfigOptions:
   - '--with-systemd'
   - '--with-system-unit-dir=%{_unitdir}'
