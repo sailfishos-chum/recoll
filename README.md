@@ -12,12 +12,14 @@ and updating.
 
 To enable scheduled indexing, do as user:
 
-    systemctl --user enable recollindex-scheduled.timer
-    systemctl --user start recollindex-scheduled.timer
+    systemctl --user enable recollindexuled.timer
+    systemctl --user start recollindex.timer
+
+The timer is configured to run twice a day at six, and one hour after a reboot.
 
 To just run the indexer once or whenerver needed, do
 
-    systemctl --user start recollindex-scheduled.service
+    systemctl --user start recollindex.service
 
 At first run, that will create necessary configuration directories at
 `~/.recoll`. The default config has been tuned a bit for Sailfish OS, and you

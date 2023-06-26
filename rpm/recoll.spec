@@ -150,26 +150,20 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 
 %preun
 # >> preun
-%systemd_preun recollindex@.service
 %systemd_user_preun recollindex.service
-%systemd_user_preun recollindex-scheduled.service
-%systemd_user_preun recollindex-scheduled.timer
+%systemd_user_preun recollindex.timer
 # << preun
 
 %post
 # >> post
-%systemd_post recollindex@.service
 %systemd_user_post recollindex.service
-%systemd_user_post recollindex-scheduled.service
-%systemd_user_post recollindex-scheduled.timer
+%systemd_user_post recollindex.timer
 # << post
 
 %postun
 # >> postun
-%systemd_postun recollindex@.service
 %systemd_user_postun recollindex.service
-%systemd_user_postun recollindex-scheduled.service
-%systemd_user_postun recollindex-scheduled.timer
+%systemd_user_postun recollindex.timer
 # << postun
 
 %files
