@@ -9,7 +9,7 @@ Name:       recoll
 # << macros
 
 Summary:    finds documents based on their contents as well as their file names
-Version:    1.34.6
+Version:    1.34.7
 Release:    0
 Group:      Applications/File
 License:    GPLv2+
