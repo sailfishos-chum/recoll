@@ -11,6 +11,7 @@ Sources:
     - recoll.conf
 Patches:
     - fix-conf-typo.patch
+    - fix-statx-defined.patch
 URL: https://www.lesbonscomptes.com/recoll
 Description: |
     Recoll is a desktop search tool that provides full text search (from

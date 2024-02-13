@@ -20,6 +20,7 @@ Source2:    recollindex-scheduled.timer
 Source3:    recoll.conf
 Source100:  recoll.yaml
 Patch0:     fix-conf-typo.patch
+Patch1:     fix-statx-defined.patch
 Requires:   aspell-en
 Requires:   xdg-utils
 Requires(pre): systemd
@@ -89,6 +90,8 @@ Group:      Development/Libraries
 
 # fix-conf-typo.patch
 %patch0 -p1
+# fix-statx-defined.patch
+%patch1 -p1
 # >> setup
 # << setup
 
