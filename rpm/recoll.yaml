@@ -73,6 +73,7 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_userunitdir}/*'
   - '%{_datadir}/%{name}/examples/*'
+  - '%{_libdir}/lib{name}-*.so'
   # '%exclude %{_datadir}/%{name}/examples/*qss'
   # '%exclude %{_datadir}/%{name}/examples/*css'
 
@@ -88,11 +89,12 @@ SubPackages:
         - unzip
         - djvulibre
 
-#    - Name:  devel
-#      Summary: Development files for %{name}
-#      Group: Development/Libraries
-#      Files:
-#        - '%{_libdir}/*.so'
+    - Name:  devel
+      Summary: Development files for %{name}
+      Group: Development/Libraries
+      Files:
+        - '%{_libdir}/lib{name}.so'
+        - '%{_includedir}/%{name}/'
 
     - Name:  python
       Summary: Python interface for %{name}

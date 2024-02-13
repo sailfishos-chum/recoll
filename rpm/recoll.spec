@@ -26,6 +26,8 @@ Requires:   xdg-utils
 Requires(pre): systemd
 Requires(preun): systemd
 Requires(post): systemd
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(aspell)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(python3)
@@ -68,6 +70,14 @@ Requires:   unzip
 Requires:   djvulibre
 
 %description helpers
+%{summary}.
+
+%package devel
+Summary:    Development files for %{name}
+Group:      Development/Libraries
+Requires:   %{name} = %{version}-%{release}
+
+%description devel
 %{summary}.
 
 %package python
@@ -151,12 +161,14 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 # << preun
 
 %post
+/sbin/ldconfig
 # >> post
 %systemd_user_post recollindex.service
 %systemd_user_post recollindex.timer
 # << post
 
 %postun
+/sbin/ldconfig
 # >> postun
 %systemd_user_postun recollindex.service
 %systemd_user_postun recollindex.timer
@@ -168,6 +180,7 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 %dir %{_datadir}/%{name}
 %{_userunitdir}/*
 %{_datadir}/%{name}/examples/*
+%{_libdir}/lib{name}-*.so
 # >> files
 # << files
 
@@ -175,6 +188,13 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 %defattr(-,root,root,-)
 # >> files helpers
 # << files helpers
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/lib{name}.so
+%{_includedir}/%{name}/
+# >> files devel
+# << files devel
 
 %files python
 %defattr(-,root,root,-)
