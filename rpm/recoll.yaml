@@ -103,13 +103,13 @@ SubPackages:
         - '%{_datadir}/%{name}/filters/*'
         - '%{python3_sitearch}/*'
 
-    - Name:  librecoll
-      AsWholeName: true
-      AutoDepend: false
-      Summary: The librecoll library
-      Group: Development/Libraries
-      Description:
-              '%{summary}.'
-      Files:
-        - '%dir %{_libdir}/%{name}'
-        - '%{_libdir}/%{name}/*.so'
+#    - Name:  librecoll
+#      AsWholeName: true
+#      AutoDepend: false
+#      Summary: The librecoll library
+#      Group: Development/Libraries
+#      Description:
+#              '%{summary}.'
+#      Files:
+#        - '%dir %{_libdir}/%{name}'
+#        - '%{_libdir}/%{name}/*.so'

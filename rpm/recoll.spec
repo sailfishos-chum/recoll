@@ -78,13 +78,6 @@ Requires:   %{name} = %{version}-%{release}
 %description python
 %{summary}.
 
-%package -n librecoll
-Summary:    The librecoll library
-Group:      Development/Libraries
-
-%description -n librecoll
-%{summary}.
-
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
@@ -189,10 +182,3 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 %{python3_sitearch}/*
 # >> files python
 # << files python
-
-%files -n librecoll
-%defattr(-,root,root,-)
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*.so
-# >> files librecoll
-# << files librecoll
