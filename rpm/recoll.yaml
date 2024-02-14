@@ -73,7 +73,9 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_userunitdir}/*'
   - '%{_datadir}/%{name}/examples/*'
-  - '%{_libdir}/lib%{name}-%{version}.so'
+  - '%{_libdir}/lib%{name}-*.so'
+  # would love to use version here, but OBS mangles it:
+  # '%{_libdir}/lib%{name}-%{version}.so'
   # '%exclude %{_datadir}/%{name}/examples/*qss'
   # '%exclude %{_datadir}/%{name}/examples/*css'
 
