@@ -180,7 +180,7 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 %dir %{_datadir}/%{name}
 %{_userunitdir}/*
 %{_datadir}/%{name}/examples/*
-%{_libdir}/lib{name}-*.so
+%{_libdir}/lib%{name}-%{version}.so
 # >> files
 # << files
 

@@ -73,7 +73,7 @@ Files:
   - '%dir %{_datadir}/%{name}'
   - '%{_userunitdir}/*'
   - '%{_datadir}/%{name}/examples/*'
-  - '%{_libdir}/lib{name}-*.so'
+  - '%{_libdir}/lib%{name}-%{version}.so'
   # '%exclude %{_datadir}/%{name}/examples/*qss'
   # '%exclude %{_datadir}/%{name}/examples/*css'
 
