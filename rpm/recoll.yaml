@@ -93,7 +93,7 @@ SubPackages:
       Summary: Development files for %{name}
       Group: Development/Libraries
       Files:
-        - '%{_libdir}/lib{name}.so'
+        - '%{_libdir}/lib%{name}.so'
         - '%{_includedir}/%{name}/'
 
     - Name:  python

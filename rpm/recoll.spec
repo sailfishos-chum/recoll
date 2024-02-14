@@ -191,7 +191,7 @@ install -m 0644 %SOURCE3 %{buildroot}%{_datadir}/%{name}/examples/recoll.conf.sf
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/lib{name}.so
+%{_libdir}/lib%{name}.so
 %{_includedir}/%{name}/
 # >> files devel
 # << files devel
